@@ -1,1 +1,68 @@
-<h1>RSA加密网站<h1>
+<!DOCTYPE html>
+<html lang="ch">
+	<head>
+		<meta charset="UTF-8">
+		<title>RSA加解密</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+
+			.header {
+				background-color: #f2f2f2;
+				padding: 10px;
+				text-align: center;
+			}
+
+			.logo {
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			.nav {
+				display: flex;
+				justify-content: center;
+				padding: 10px 0;
+				background-color: #ddd;
+			}
+
+			.nav a {
+				text-decoration: none;
+				color: black;
+				padding: 10px 20px;
+				margin: 0 5px;
+				font-size: 18px;
+			}
+
+			.nav a:hover {
+				background-color: #bcbcbc;
+			}
+
+			.main-content {
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="logo">RSA加解密</div>
+		</div>
+		<div class="nav">
+			<a href="./index.html">首页</a>
+			<a href="./page/getkey.html">获取密钥</a>
+			<a href="./page/encrypt.html">加密</a>
+			<a href="./page/decrypt.html">解密</a>
+		</div>
+		<div class="main-content">
+			<p>RSA算法是一种非对称加密算法，与对称加密算法不同的是,RSA算法有两个不同的密钥,一个是公钥,一个是私钥。
+				RSA公开密钥密码体制是一种使用不同的加密密钥与解密密钥，“由已知加密密钥推导出解密密钥在计算上是不可行的”密码体制 。
+				在公开密钥密码体制中，加密密钥（即公开密钥）PK是公开信息，而解密密钥（即秘密密钥）SK是需要保密的。加密算法E和解密算法D也都是公开的。虽然解密密钥SK是由公开密钥PK决定的，但却不能根据PK计算出SK。
+				正是基于这种理论，1978年出现了著名的RSA算法，它通常是先生成一对RSA密钥，其中之一是保密密钥，由用户保存；另一个为公开密钥，可对外公开，甚至可在网络服务器中注册。为提高保密强度，RSA密钥至少为500位长。这就使加密的计算量很大。为减少计算量，在传送信息时，常采用传统加密方法与公开密钥加密方法相结合的方式，即信息采用改进的DES或IDEA对话密钥加密，然后使用RSA密钥加密对话密钥和信息摘要。对方收到信息后，用不同的密钥解密并可核对信息摘要。
+				RSA是被研究得最广泛的公钥算法，从提出后经历了各种攻击的考验，逐渐为人们接受，普遍认为是目前最优秀的公钥方案之一。1983年麻省理工学院在美国为RSA算法申请了专利。
+				RSA允许选择公钥的大小。512位的密钥被视为不安全的；768位的密钥不用担心受到除了国家安全管理（NSA）外的其他事物的危害；RSA在一些主要产品内部都有嵌入，像 Windows、网景 Navigator、
+				Quicken和 Lotus Notes。
+				由于RSA算法1024位密钥面临严重的安全威胁,为保障电子认证服务安全应用,2016年12月5日,上海市密码管理局在其官方网站上发布公告,称从2017年1月1日起停止提供RSA算法1024位密钥对服务,并配合电子认证服务机构和应用单位做好应对措施,确保平稳过渡。
+			</p>
+		</div>
+	</body>
+</html>

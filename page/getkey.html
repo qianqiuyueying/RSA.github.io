@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ch">
+	<head>
+		<meta charset="UTF-8">
+		<title>RSA加解密</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+
+			.header {
+				background-color: #f2f2f2;
+				padding: 10px;
+				text-align: center;
+			}
+
+			.logo {
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			.nav {
+				display: flex;
+				justify-content: center;
+				padding: 10px 0;
+				background-color: #ddd;
+			}
+
+			.nav a {
+				text-decoration: none;
+				color: black;
+				padding: 10px 20px;
+				margin: 0 5px;
+				font-size: 18px;
+			}
+
+			.nav a:hover {
+				background-color: #bcbcbc;
+			}
+
+			.main-content {
+				padding: 20px;
+			}
+
+			.grid-container {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+				gap: 10px;
+				padding: 10px;
+			}
+
+			.grid-item {
+				padding: 5px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				background-color: #f9f9f9;
+				text-align: center;
+			}
+
+			.checkbox-wrapper {
+				margin-bottom: 5px;
+			}
+
+			/* 基本的按钮样式 */
+			button {
+				padding: 10px 20px;
+				/* 按钮内边距 */
+				font-size: 16px;
+				/* 字体大小 */
+				font-weight: bold;
+				/* 字体加粗 */
+				color: #ffffff;
+				/* 文字颜色 */
+				background-color: #007bff;
+				/* 背景颜色 */
+				border: none;
+				/* 边框去除 */
+				border-radius: 5px;
+				/* 边框圆角 */
+				cursor: pointer;
+				/* 鼠标悬停时显示手型图标 */
+				outline: none;
+				/* 点击时不显示轮廓 */
+				transition: all 0.3s ease;
+				/* 平滑过渡效果 */
+			}
+
+			/* 鼠标悬停时的样式 */
+			button:hover {
+				background-color: #0056b3;
+				/* 鼠标悬停时的背景颜色 */
+			}
+
+			/* 按钮点击时的样式 */
+			button:active {
+				background-color: #00408d;
+				/* 点击时的背景颜色 */
+				transform: scale(0.98);
+				/* 点击时缩小按钮 */
+			}
+
+			/* 按钮聚焦时的样式 */
+			button:focus {
+				box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+				/* 聚焦时显示阴影 */
+			}
+
+			.fixed提示框 {
+				position: fixed;
+				/* 固定定位 */
+				top: 20px;
+				/* 距离顶部20px */
+				left: 20px;
+				/* 距离左边20px */
+				width: 100px;
+				/* 提示框宽度 */
+				padding: 10px;
+				/* 内边距 */
+				background-color: #ffffff;
+				/* 背景颜色 */
+				border: 1px solid #cccccc;
+				/* 边框 */
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				/* 阴影效果 */
+				z-index: 1000;
+				/* 确保提示框在最上层 */
+				font-family: Arial, sans-serif;
+				/* 字体 */
+				font-size: 14px;
+				/* 字体大小 */
+				color: #333333;
+				/* 字体颜色 */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="fixed提示框">
+			<span id="spanN">N: xx</span><br>
+			<span id="spanE">E: xx</span>
+		</div>
+		<div class="header">
+			<div class="logo">RSA加解密</div>
+		</div>
+		<div class="nav">
+			<a href="../index.html">首页</a>
+			<a href="./getkey.html">获取密钥</a>
+			<a href="./encrypt.html">加密</a>
+			<a href="./decrypt.html">解密</a>
+		</div>
+		<div class="main-content">
+			<h1>制作密钥</h1>
+			<form id="primeSelectionForm">
+				<p>请选择两个质数以生成公钥和私钥中的N（目前仅支持2~9973的质数）</p>
+				<div class="grid-container" id="checkboxGrid"></div>
+				<button type="button" onclick="submitSelection()">生成备选公钥N</button>
+				<div class="grid-container" id="selectablePrivateKeys"></div>
+			</form>
+		</div>
+		<script src='../js/getkey.js'></script>
+	</body>
+</html>

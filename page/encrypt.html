@@ -41,6 +41,10 @@
 			.main-content {
 				padding: 20px;
 			}
+			
+			#ciphertext {
+				overflow: auto;
+			}
 		</style>
 	</head>
 	<body>
@@ -55,6 +59,15 @@
 		</div>
 		<div class="main-content">
 			<h1>encrypt</h1>
+			<div id="en_div">
+				<input id="inputE" type="number" placeholder="E"/><br><br>
+				<input id="inputN" type="number" placeholder="N"/><br><br>
+				<textarea id="plaintext" cols="30" rows="10" placeholder="请输入需要加密的内容"></textarea><br><br>
+				<button id="enButton" onclick="onEncrypt()">加密</button><br><br>
+				<hr><br>
+				<div id="ciphertext" style="border: 1px black solid; width: 231px; height: 161px; padding: 5px;">加密</div>
+			</div>
 		</div>
+		<script src="../js/encrypt.js"></script>
 	</body>
 </html>

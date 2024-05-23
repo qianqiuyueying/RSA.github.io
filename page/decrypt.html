@@ -41,6 +41,10 @@
 			.main-content {
 				padding: 20px;
 			}
+			
+			#ciphertext {
+				overflow: auto;
+			}
 		</style>
 	</head>
 	<body>
@@ -55,6 +59,15 @@
 		</div>
 		<div class="main-content">
 			<h1>decrypt</h1>
+			<div id="en_div">
+				<input id="inputD" type="number" placeholder="D"/><br><br>
+				<input id="inputN" type="number" placeholder="N"/><br><br>
+				<textarea id="ciphertext" cols="30" rows="10" placeholder="请输入需要解密的内容"></textarea><br><br>
+				<button id="deButton" onclick="onDecrypt()">解密</button><br><br>
+				<hr><br>
+				<div id="plaintext" style="border: 1px black solid; width: 231px; height: 161px; padding: 5px;">过大的质数可能会导致计算量较大，请耐心等到10~20秒</div>
+			</div>
 		</div>
+		<script src="../js/decrypt.js"></script>
 	</body>
 </html>

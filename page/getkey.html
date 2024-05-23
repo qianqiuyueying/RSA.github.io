@@ -108,11 +108,11 @@
 			.fixed提示框 {
 				position: fixed;
 				/* 固定定位 */
-				top: 20px;
+				top: 130px;
 				/* 距离顶部20px */
 				left: 20px;
 				/* 距离左边20px */
-				width: 100px;
+				width: 150px;
 				/* 提示框宽度 */
 				padding: 10px;
 				/* 内边距 */
@@ -136,7 +136,9 @@
 	<body>
 		<div class="fixed提示框">
 			<span id="spanN">N: xx</span><br>
-			<span id="spanE">E: xx</span>
+			<span id="spanE">E: xx</span><br>
+			<span id="spanD">D: xx</span><br>
+			<span>请保存好以上数据</span>
 		</div>
 		<div class="header">
 			<div class="logo">RSA加解密</div>
@@ -154,6 +156,8 @@
 				<div class="grid-container" id="checkboxGrid"></div>
 				<button type="button" onclick="submitSelection()">生成备选公钥N</button>
 				<div class="grid-container" id="selectablePrivateKeys"></div>
+				<div id="getD"></div>
+				<div class="grid-container" id="selectableD"></div>
 			</form>
 		</div>
 		<script src='../js/getkey.js'></script>

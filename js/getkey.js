@@ -67,7 +67,9 @@ var primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 
 	9769, 9781, 9787, 9791, 9803, 9811, 9817, 9829, 9833, 9839, 9851, 9857, 9859, 9871, 9883, 9887, 9901, 9907,
 	9923, 9929, 9931, 9941, 9949, 9967, 9973
 ];
-
+let D = 0;
+let T = 0;
+let E = 0;
 function generateCheckboxes(primeNumbers) {
 	// 锁定插入元素
 	const gridContainer = document.getElementById('checkboxGrid');
@@ -142,13 +144,14 @@ function getE(p, q) {
 
 	Ebutton = document.createElement('button')
 	Ebutton.id = 'Ebutton'
+	Ebutton.type = 'button'
 	Ebutton.onclick = function() {
-		confirmE()
+		confirmEAndProduceD()
 	}
-	Ebutton.textContent = '选取公钥'
-	mainContent.appendChild(Ebutton)
+	Ebutton.textContent = '选取公钥并生成备选私钥D'
+	
 
-	const T = (p - 1) * (q - 1)
+	T = (p - 1) * (q - 1)
 	// 遍历质数表，将可以做公钥E的质数放出来
 	for (num of primeNumbers) {
 		// 不合条件
@@ -173,15 +176,53 @@ function getE(p, q) {
 		gridItem.append(checkboxWrapper)
 		PrivateKeys.appendChild(gridItem)
 	}
+	const getD = document.getElementById('getD')
+	getD.appendChild(Ebutton)
 }
 
-function confirmE() {
-	const E = document.querySelector('input[type="radio"]:checked').value
+function confirmEAndProduceD() {
+	const Evalue = document.querySelector('input[type="radio"]:checked').value
 	const spanE = document.getElementById('spanE')
-	spanE.textContent = 'E：' + E
+	spanE.textContent = 'E：' + Evalue
+	E = parseInt(Evalue)
 	const mainContent = document.getElementsByClassName('main-content')[0]
-	const submit = document.createElement('button')
-	submit.onclick = function() {
-		
+	let submit = document.getElementById('submit')
+	if (!submit) {
+		submit = document.createElement('button')
+		submit.id = 'submit'
+		submit.textContent = '确认'
+		submit.type = 'button'
+		submit.onclick = function() {
+			const Dvalue = document.querySelector('input[type="radio"][name="selectableD"]:checked').value;
+			const spanD = document.getElementById('spanD')
+			spanD.textContent = 'D：' + Dvalue
+		}
+		mainContent.appendChild(submit)
+	}
+	
+	// 生成备选D
+	const selectableD = document.getElementById('selectableD')
+	selectableD.innerHTML = ''
+	for (let i = 1; i < 1000; i++) {
+		let D = (i * T + 1) / E;
+		if (Number.isInteger(D)) {
+			let gridItem = document.createElement('div')
+			gridItem.className = 'grid-item'
+			let checkboxWrapper = document.createElement('div')
+			checkboxWrapper.className = 'checkbox-wrapper'
+			let radio = document.createElement('input')
+			radio.type = 'radio'
+			radio.id = D
+			radio.name = 'selectableD'
+			radio.value = D
+			let label = document.createElement('label')
+			label.htmlFor = D
+			label.textContent = D
+			checkboxWrapper.appendChild(radio)
+			checkboxWrapper.appendChild(label)
+			gridItem.appendChild(checkboxWrapper)
+			const selectableD = document.getElementById('selectableD')
+			selectableD.appendChild(gridItem)
+		}
 	}
 }
